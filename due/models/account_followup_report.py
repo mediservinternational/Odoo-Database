@@ -13,7 +13,7 @@ class AcountFollowupReport(models.Model):
     _inherit = "account.followup.report"
     
     
-def _get_options(self, previous_options=None):
+    def _get_options(self, previous_options=None):
         options = super()._get_options(previous_options)
         # It doesn't make sense to allow multicompany for these kind of reports
         # 1. Followup mails need to have the right headers from the right company

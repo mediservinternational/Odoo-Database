@@ -9,7 +9,7 @@ from odoo.tools import append_content_to_html, DEFAULT_SERVER_DATE_FORMAT, html2
 from odoo.exceptions import UserError
 
 
-Class AcountFollowupReport(models.model):
+Class AcountFollowupReport(models.Model):
     _inherit = "account.followup.report"
     
     

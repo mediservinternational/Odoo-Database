@@ -11,7 +11,7 @@
     'maintainer': 'Centralasis Proactive Solutions',
     'company': 'Centralasis Proactive Solutions',
     'website': 'https://www.centralasis.com',
-    'depends': ['base'
+    'depends': ['account', 'mail', 'sms', 'account_reports'
                 ],
     'installable': True,
     'application': False,

@@ -29,7 +29,7 @@ class AcountFollowupReport(models.AbstractModel):
         """
         headers = [{},
                    {'name': _('Coverage Period'), 'style': 'text-align:center; white-space:nowrap;'},
-                   {'name': _('Invoice Issue Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap; '},
+                   {'name': _('Issue Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap; '},
                    {'name': _('Due Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap;'},
                    {'name': _('Source Document'), 'style': 'text-align:center; white-space:nowrap;'},
                    {'name': _('Expected Date'), 'class': 'date', 'style': 'white-space:nowrap;'},

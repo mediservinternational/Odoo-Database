@@ -69,8 +69,7 @@ class AcountFollowupReport(models.AbstractModel):
             for aml in aml_recs:
                 Coverage_Start = format_date(self.env, aml.move_id.x_Coverage_StartDate, lang_code=lang_code) + " – " + format_date(self.env, aml.move_id.x_Coverage_Enddate, lang_code=lang_code)
                 if aml.payment_id.x_suspended_payment = True:
-                    Coverage_Start = "Payment is on hold"
-                    Coverage_Start = {'name': Coverage_Start, 'class': 'color-red date', 'style': 'white-space:nowrap;text-align:center;color: red;'}
+                    Coverage_Start = {'name': "Payment is on hold", 'class': 'color-red date', 'style': 'white-space:nowrap;text-align:center;color: red;'}
                 amount = aml.amount_residual_currency if aml.currency_id else aml.amount_residual
                 date_due = format_date(self.env, aml.date_maturity or aml.date, lang_code=lang_code)
                 total += not aml.blocked and amount or 0

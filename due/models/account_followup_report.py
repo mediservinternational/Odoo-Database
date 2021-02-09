@@ -72,7 +72,7 @@ class AcountFollowupReport(models.AbstractModel):
                 total += not aml.blocked and amount or 0
                 is_overdue = today > aml.date_maturity if aml.date_maturity else today > aml.date
                 is_payment = aml.payment_id
-                if is_payment
+                if is_payment:
                       Coverage_Start = "Payment is on hold"
                 if is_overdue or is_payment:
                     total_issued += not aml.blocked and amount or 0

@@ -67,12 +67,15 @@ class AcountFollowupReport(models.AbstractModel):
             total = 0
             total_issued = 0
             for aml in aml_recs:
-                Coverage_Start = format_date(self.env, aml.move_id.x_Coverage_StartDate, lang_code=lang_code) + " – " + format_date(self.env, aml.move_id.x_Coverage_Enddate, lang_code=lang_code)
                 amount = aml.amount_residual_currency if aml.currency_id else aml.amount_residual
                 date_due = format_date(self.env, aml.date_maturity or aml.date, lang_code=lang_code)
                 total += not aml.blocked and amount or 0
                 is_overdue = today > aml.date_maturity if aml.date_maturity else today > aml.date
                 is_payment = aml.payment_id
+                 if is_payment and aml.payment_id.x_suspended_payment
+                      Coverage_Start = "Payment is on hold"
+                else:
+                    Coverage_Start = format_date(self.env, aml.move_id.x_Coverage_StartDate, lang_code=lang_code) + " – " + format_date(self.env, aml.move_id.x_Coverage_Enddate, lang_code=lang_code)
                 if is_overdue or is_payment:
                     total_issued += not aml.blocked and amount or 0
                 if is_overdue:

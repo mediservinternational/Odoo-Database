@@ -73,7 +73,10 @@ class AcountFollowupReport(models.AbstractModel):
                 is_overdue = today > aml.date_maturity if aml.date_maturity else today > aml.date
                 is_payment = aml.payment_id
                 if is_payment:
-                      Coverage_Start = "Payment is on hold"
+                      Coverage_Start = "Contribution is not Applied"
+                elseif: is_payment && aml.payment_id.suspended_payment:
+                        Coverage_Start = "test"
+                            
                 if is_overdue or is_payment:
                     total_issued += not aml.blocked and amount or 0
                 if is_overdue:

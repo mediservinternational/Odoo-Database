@@ -72,11 +72,11 @@ class AcountFollowupReport(models.AbstractModel):
                 total += not aml.blocked and amount or 0
                 is_overdue = today > aml.date_maturity if aml.date_maturity else today > aml.date
                 is_payment = aml.payment_id
-                if is_payment:
-                      Coverage_Start = "Contribution is not Applied"
-                elif is_payment and aml.payment_id.x_suspended_payment == True:
+                if is_payment and aml.payment_id.x_suspended_payment == True:
                       Coverage_Start = "Contribution is in Suspense"
                       Coverage_Start = {'name': Coverage_Start,  'style': 'white-space:nowrap;text-align:center;color: red;'}
+                elif  is_payment:
+                      Coverage_Start = "Contribution is not Applied"
                 else:
                     Coverage_Start = format_date(self.env, aml.move_id.x_Coverage_StartDate, lang_code=lang_code) + " – " + format_date(self.env, aml.move_id.x_Coverage_Enddate, lang_code=lang_code)
                 if is_overdue or is_payment:
